@@ -3,11 +3,9 @@ FROM books B
          INNER JOIN book_categories BC
                     ON B.book_category_id=BC.id;
 
--- US01 -1
-    select  count(id) from users; -- 4891
+-- US01 -1 - AA
 
-    select count(distinct id) from users; -- 4891
 
--- US02 -1
+-- US02 -1 -WH
 select count(*) from book_borrow
 where returned_date is null ;
