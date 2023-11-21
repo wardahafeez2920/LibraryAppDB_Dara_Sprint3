@@ -7,3 +7,7 @@ FROM books B
     select  count(id) from users; -- 4891
 
     select count(distinct id) from users; -- 4891
+
+-- US02 -1
+select count(*) from book_borrow
+where returned_date is null ;
