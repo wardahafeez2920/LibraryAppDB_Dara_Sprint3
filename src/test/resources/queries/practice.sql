@@ -10,10 +10,13 @@ FROM books B
 select count(*) from book_borrow
 where returned_date is null ;
 
-
-
-
-
+-- US05 -1
+select bc.name, count(*)
+from book_borrow bb
+         inner join books b on bb.book_id = b.id
+         inner join book_categories bc on b.book_category_id = bc.id
+group by name
+order by 2 desc;
 
 -- US06 -1 -SS
 select * from books
