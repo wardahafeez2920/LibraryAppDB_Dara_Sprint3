@@ -1,4 +1,4 @@
-@awzal @db
+@az @db
 Feature: As a data consumer, I want the user information are stored in mySql DB correctly in users table.
   Background:
     Given Establish the database connection-AZ

@@ -13,15 +13,14 @@ public class us01_Awzel_stepDef {
 
     String actualUserCount;
     List<String> expectedColumnNames;
-    DashBoardPage dashBoardPage = new DashBoardPage();
 
     @Given("Establish the database connection-AZ")
     public void establish_the_database_connection_az() {
         //DB_Util.createConnection();
         // DB connected through hooks class
-//        System.out.println("---------------------------------------");
-//        System.out.println("-------DB CONNECTED VIA HOOKS----------");
-//        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("-------DB CONNECTED VIA HOOKS----------");
+        System.out.println("---------------------------------------");
 
     }
     @When("Execute query to get all IDs from users-AZ")
