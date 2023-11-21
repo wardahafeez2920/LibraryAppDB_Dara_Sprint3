@@ -46,6 +46,9 @@ public class BookPage extends BasePage {
     @FindBy(id = "description")
     public WebElement description;
 
+    @FindBy(xpath = "//button[.='Close']")
+    public WebElement closeBtn;
+
 
 
     public WebElement editBook(String book) {
