@@ -4,7 +4,9 @@ import com.library.utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookPage extends BasePage {
@@ -51,8 +53,19 @@ public class BookPage extends BasePage {
 
 
 
+
     public WebElement editBook(String book) {
         String xpath = "//td[3][.='" + book + "']/../td/a";
+        return Driver.getDriver().findElement(By.xpath(xpath));
+    }
+
+    /**
+     * to choose any edit btn
+     * @param anyBookInfo except name -> since name might be duplicated
+     * @return
+     */
+    public WebElement editBookBtn(String anyBookInfo){
+        String xpath = "//td[.='" + anyBookInfo + "']/../td/a";
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
 
@@ -60,6 +73,21 @@ public class BookPage extends BasePage {
         String xpath = "//td[3][.='" + book + "']/../td/a";
         return Driver.getDriver().findElement(By.xpath(xpath));
     }
+
+
+    public List<WebElement> bookInfo(){
+
+        List<WebElement> boxes = new ArrayList<>();
+
+        boxes.add(bookName);
+        boxes.add(isbn);
+        boxes.add(year);
+        boxes.add(author);
+        boxes.add(description);
+
+        return boxes;
+    }
+
 
 
 

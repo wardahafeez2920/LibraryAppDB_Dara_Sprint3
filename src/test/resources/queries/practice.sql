@@ -21,3 +21,5 @@ where name in('Naruto', 'Percy Jackson: The Sea of Monsters');
 
 select * from books
 where name = 'Naruto';
+
+select name, isbn, year, author, description from books where name = 'Percy Jackson: The Sea of Monsters';

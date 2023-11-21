@@ -2,10 +2,12 @@ package com.library.steps;
 
 import com.library.pages.BookPage;
 import com.library.pages.DashBoardPage;
+import com.library.utility.BrowserUtil;
 import com.library.utility.DB_Util;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -25,6 +27,7 @@ public class us06_Sabina_stepDef {
 
     @When("the librarian click to add book-SS")
     public void the_librarian_click_to_add_book_ss() {
+        BrowserUtil.waitForPageToLoad(10);
         bookPage.addBook.click();
     }
 
@@ -60,10 +63,15 @@ public class us06_Sabina_stepDef {
         System.out.println("bookCatSelect.getFirstSelectedOption() = " + bookCatSelect.getFirstSelectedOption().getText());
     }
 
+    @When("the librarian adds {string} of the book")
+    public void the_librarian_adds_of_the_book(String desc) {
+        bookPage.description.sendKeys(desc);
+    }
+
     @When("the librarian click to save changes-SS")
     public void the_librarian_click_to_save_changes_ss() {
         bookPage.saveChanges.click();
-       // bookPage.closeBtn.click();
+        // bookPage.closeBtn.click();
     }
 
     @Then("verify {string} message is displayed-SS")
@@ -71,15 +79,32 @@ public class us06_Sabina_stepDef {
         System.out.println("bookPage.toastMessage.isDisplayed() = " + bookPage.toastMessage.isDisplayed());
     }
 
-    @Then("verify {string} information must match with DB-SS")
-    public void verify_information_must_match_with_db_ss(String bookName) {
-        DB_Util.runQuery("select * from books where name = '" + bookName + "'");
 
-        List<String> actualBookEntry = DB_Util.getRowDataAsList(1);
 
-        System.out.println("actualBookEntry = " + actualBookEntry);
+    /**
+     * AC2 -> comparison of Database with UI input
+     **/
 
-        DB_Util.runQuery("select name from books where name = '" + bookName + "'");
+    @When("librarian opens book {string} in {string}-SS")
+    public void librarian_opens_book_in_ss(String bookName, String category) {
+
+        bookPage.search.sendKeys(bookName);
+
+        BrowserUtil.hover(bookPage.editBookBtn(bookName));
+
+        bookPage.editBookBtn(bookName).click();
+    }
+
+    @Then("database must match book {string} information-SS")
+    public void database_must_match_book_information_ss(String bookName) {
+
+        List<String> expectedBookInfo = BrowserUtil.getElementsTextWithValueAttribute(bookPage.bookInfo());
+
+        DB_Util.runQuery("select name, isbn, year, author, description from books where name = '" + bookName + "'");
+
+        List<String> actualBookInfo = DB_Util.getRowDataAsList(1);
+
+        Assert.assertEquals(expectedBookInfo, actualBookInfo);
 
 
     }
