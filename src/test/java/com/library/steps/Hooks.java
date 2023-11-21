@@ -37,8 +37,8 @@ public class Hooks {
 
     @Before("@db")
     public void setupDB(){
-        DB_Util.createConnection();
         System.out.println("connecting to database.....");
+        DB_Util.createConnection(); // this line prints "CONNECTION SUCCESSFUL" if connected
 
     }
 
