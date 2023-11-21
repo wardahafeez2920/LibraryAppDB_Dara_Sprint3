@@ -4,7 +4,9 @@ FROM books B
                     ON B.book_category_id=BC.id;
 
 -- US01 -1 - AA
-
+select count(id) from users;
+select count(distinct id) from users;
+select * from users;
 
 -- US02 -1 -WH
 select count(*) from book_borrow
