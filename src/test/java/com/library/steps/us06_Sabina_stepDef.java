@@ -33,6 +33,7 @@ public class us06_Sabina_stepDef {
 
     @When("the librarian enter book name {string}-SS")
     public void the_librarian_enter_book_name_ss(String bookName) {
+        BrowserUtil.waitForClickablility(bookPage.bookName, 20);
         bookPage.bookName.sendKeys(bookName);
     }
 
