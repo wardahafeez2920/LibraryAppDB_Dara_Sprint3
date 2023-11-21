@@ -76,6 +76,7 @@ public class us06_Sabina_stepDef {
 
     @Then("verify {string} message is displayed-SS")
     public void verify_message_is_displayed_ss(String msg) {
+        BrowserUtil.waitForVisibility(bookPage.toastMessage, 20);
         System.out.println("bookPage.toastMessage.isDisplayed() = " + bookPage.toastMessage.isDisplayed());
     }
 
@@ -89,9 +90,6 @@ public class us06_Sabina_stepDef {
     public void librarian_opens_book_in_ss(String bookName, String category) {
 
         bookPage.search.sendKeys(bookName);
-
-        BrowserUtil.hover(bookPage.editBookBtn(bookName));
-
         bookPage.editBookBtn(bookName).click();
     }
 
