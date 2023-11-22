@@ -9,13 +9,13 @@ import org.junit.Assert;
 
 public class us02_Warda_stepDef {
 
-BorrowedBooksPage borrowedBooksPage = new BorrowedBooksPage();
+
 DashBoardPage dashBoardPage = new DashBoardPage();
     String actualBorrowedBooks;
 
     @When("the librarian gets borrowed books number-WH")
     public void the_librarian_gets_borrowed_books_number_wh() {
-        //actualBorrowedBooks = borrowedBooksPage.borrowedBooksCount.getText();
+
         actualBorrowedBooks = dashBoardPage.borrowedBooksNumber.getText();
 
     }
