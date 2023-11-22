@@ -19,3 +19,12 @@ from book_borrow bb
          inner join book_categories bc on b.book_category_id = bc.id
 group by name
 order by 2 desc;
+
+-- US06 -1 -SS
+select * from books
+where name in('Naruto', 'Percy Jackson: The Sea of Monsters');
+
+select * from books
+where name = 'Naruto';
+
+select name, isbn, year, author, description from books where name = 'Percy Jackson: The Sea of Monsters';
