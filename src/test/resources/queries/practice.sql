@@ -39,3 +39,7 @@ inner join book_borrow on u.id = bb.user.id
 inner join books b on bb.book.id = b.id
 where full_name = 'Test Student 1' and name= 'Head First Java'
 order by 3 desc;
+
+--US02-1-JD
+select count(*) from book_borrow where is_returned=0;
+
