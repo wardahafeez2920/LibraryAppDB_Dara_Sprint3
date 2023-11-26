@@ -43,3 +43,16 @@ order by 3 desc;
 --US02-1-JD
 select count(*) from book_borrow where is_returned=0;
 
+
+
+SELECT DISTINCT isbn,BO.name as bookname,author, BC.name as category, year, U.full_name as BorrowedBy
+                from books BO  JOIN book_categories BC
+           on BO.book_category_id = BC.id
+            join book_borrow BB
+          on BO.id = BB.book_id
+        join users U
+           on BB.user_id = U.id
+      where BO.name = 'Clean Code'
+ORDER BY isbn DESC;
+
+
