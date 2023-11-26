@@ -394,5 +394,37 @@ public class DB_Util {
 
     }
 
+    /**
+     * Save entire row data as Map<String,String>
+     * @param rowNum row number
+     * @return Map object that contains key value pair
+     *      key     : column name
+     *      value   : cell value
+     */
+    public static Map<String,String> getRowMapForJoinedTables(int rowNum){
+
+        Map<String,String> rowMap = new LinkedHashMap<>();
+        int columnCount = getColumnCount() ;
+
+        try{
+
+            rs.absolute(rowNum) ;
+
+            for (int colIndex = 1; colIndex <= columnCount ; colIndex++) {
+                String columnName = rsmd.getColumnLabel(colIndex) ;
+                String cellValue  = rs.getString(colIndex) ;
+                rowMap.put(columnName, cellValue) ;
+            }
+
+        }catch(Exception e){
+            System.out.println("ERROR OCCURRED WHILE getRowMap " + e.getMessage() );
+        }finally {
+            resetCursor();
+        }
+
+
+        return rowMap ;
+    }
+
 
 }
