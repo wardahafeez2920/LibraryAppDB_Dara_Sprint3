@@ -1,4 +1,4 @@
-
+@kv @ui @db
 Feature: Books module
   As a librarian, I should be able to add new book into library
 
@@ -12,9 +12,9 @@ Feature: Books module
     When the librarian enter author "<Author>"-KV
     And the librarian choose the book category "<Book Category>"-KV
     And the librarian click to save changes-KV
-    Then verify "The book has been created" message is displayed-KV
+    Then verify "The book has been created." message is displayed-KV
     And verify "<Book Name>" information must match with DB-KV
     Examples:
-      | Book Name             | ISBN     | Year | Author          | Book Category        |
-      | Head First Java       | 10112021 | 2021 | Kathy Sierra    | Action and Adventure |
-      | The Scrum Field Guide | 11112021 | 2006 | Mitch Lacey     | Short Story          |
+      | Book Name   | ISBN  | Year  | Author  | Book Category |
+      | kev+friends | 10107 | 2023  | Kevin v | Classic       |
+      | McNugget    | 1117  | 77710 | owen c  | Drama         |
