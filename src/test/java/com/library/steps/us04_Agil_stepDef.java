@@ -37,13 +37,14 @@ public class us04_Agil_stepDef {
     @Then("book information must match the Database-AB")
     public void book_information_must_match_the_database() {
         String query = "SELECT DISTINCT isbn,BO.name as bookname,author, BC.name as category, year, U.full_name as BorrowedBy\n" +
-                "from books BO  JOIN book_categories BC\n" +
-                "                  on BO.book_category_id = BC.id\n" +
-                "             join book_borrow BB\n" +
-                "                  on BO.id = BB.book_id\n" +
-                "             join users U\n" +
-                "                  on BB.user_id = U.id\n" +
-                "where BO.name = 'Clean Code';";
+                "                from books BO  JOIN book_categories BC\n" +
+                "           on BO.book_category_id = BC.id\n" +
+                "            join book_borrow BB\n" +
+                "          on BO.id = BB.book_id\n" +
+                "        join users U\n" +
+                "           on BB.user_id = U.id\n" +
+                "      where BO.name = 'Clean Code'\n" +
+                "ORDER BY isbn DESC;";
         DB_Util.runQuery(query);
         Map<String, String> DB_Book_info = DB_Util.getRowMapForJoinedTables(1);
         System.out.println("DB_Book_info = " + DB_Book_info);
